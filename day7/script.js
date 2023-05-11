@@ -1,18 +1,17 @@
-let heading = document.querySelector("h1");
-let btn = document.querySelector(".change-btn");
-let flag = 1;
-btn.addEventListener("click", () => {
-    // heading.innerHTML = "ooor heloo bhai"
+const form = document.querySelector("form");
+form.addEventListener("submit", (event)=>{
+    event.preventDefault();
+    // console.log("hellooooooooooooooo")
+
+    // console.log(input, textarea.value)
+    // console.log(event)
+
+    // console.log(event.target[0].value);
 
 
-    if(flag === 0){
-        heading.innerHTML = "ooor heloo bhai";
-        heading.style.fontSize = "4rem"
-        flag = 1;
-    }else{
-        heading.innerHTML = "hello"
-        flag = 0;
-    }
+    const[title, description]= event.target;
+    console.log(title.value, description.value);
+
 
     
-});
+})
