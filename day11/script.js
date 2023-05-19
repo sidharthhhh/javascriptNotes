@@ -72,18 +72,35 @@
 // }
 // console.log(isPrime ? 'prime' : 'not prime')
 
-function isPrime(n){
+// check prime number using funtion
+// function isPrime(n){
     
-    let flag = `true ${"its a prime number"}`;
-    for(let i = 2; i<= n/2; i++){
-        if(n%i === 0){
-            flag = `false ${"not a prime number"}`;
-            break;
-        }
+//     let flag = `true ${"its a prime number"}`;
+//     for(let i = 2; i<= n/2; i++){
+//         if(n%i === 0){
+//             flag = `false ${"not a prime number"}`;
+//             break;
+//         }
+//     }
+//  return flag
+// }
+// let num = +prompt("enter the number");
+// console.log(isPrime(num));
+// --------------------------------------------------------- 
+
+// cheking prime number by using while loop
+let n = 5;
+let i = 2;
+let flag = true;
+while(i<=n/2){
+    if(n%i === 0){
+        flag = false;
+        break;
     }
- return flag
+    i++;
 }
-let num = +prompt("enter the number");
-console.log(isPrime(num))
+console.log(flag ? 'prime' : 'not prime')
+
+
 
 
