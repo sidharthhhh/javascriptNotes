@@ -66,3 +66,52 @@
 // console.log(reverseoutput)
 
 // 58) Check string is Pallindrome or not**
+
+
+
+
+
+
+
+
+// /// ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ------------ARRRRRRAYYYYYYYYYYYYYYYYYYY-----------------
+
+// let arr = [];
+// let n = +prompt("enter the length of a array");
+// for (let i = 0; i < n ; i++) {
+//     let x = +prompt(`enter the arrray items ${i+1}`)
+//     arr.push(x)
+// }
+// console.log(arr)
+
+// print array in reverse order
+
+// let arr = [];
+// let n = +prompt("enter the length of a array");
+// for (let i = 0; i < n ; i++) {
+//     let x = +prompt(`enter the arrray items ${i+1}`)
+//     arr.push(x);
+// }
+// console.log(arr)
+// let arr1 = [];
+// for(let i = n-1; i>=0; i--){
+//     arr1.push(arr[i]);
+// }
+// console.log(arr1)
+
+// print fabonacci series using
+
+let n = 10;
+let first = 0;
+let second = 1;
+let next = 0;
+while(n-2>0){
+    
+}
+console.log(first, second)
+
+
+
+
