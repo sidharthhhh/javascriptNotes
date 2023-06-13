@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:gilroy;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(114, 216, 250);
+}
+
+#full-screen{
+    height: 100%;
+    width: 100%;
+    background-color: #eee;
+    position: absolute;
+    top: -100%;
+    transition: all ease 1s;
+}
+
+#nav{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 99;
+}
