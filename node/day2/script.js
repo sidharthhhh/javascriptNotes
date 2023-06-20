@@ -1,7 +1,5 @@
 const express = require('express');
 const app = express();
-
-
 //routes
 app.get("/", (req, res)=>{
   res.sendFile(__dirname+ "/index.html");
@@ -9,8 +7,6 @@ app.get("/", (req, res)=>{
 
 app.get("/about", (req, res)=>{
     res.sendFile(__dirname + '/about.html')
-
-
 })
 
 app.listen(3000, ()=>{
