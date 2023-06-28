@@ -1,0 +1,10 @@
+1. how can we add external file in it?
+
+Ans:- step1. Make a "public" Folder and inside it make 3 folder "images" , "stylesheets", "javascript" in it.
+     step2. use "public" folder in "app.js" and make it static route(/) --> 
+     <!-- "app.use(express.static(__dirname + "/public"));" -->
+     step3. maake new file "style.css" in "public" -> stylesheets -> style.css and write test code here.
+     step4. in "index.ejs" add link tag and use path "/stylesheets/style.css"
+ 
+
+<%= %>  => ye variable ki value dikhaane ke liye use jarte
