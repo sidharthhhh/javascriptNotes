@@ -8,6 +8,11 @@
 // console.log(newstr)
 // console.log(newstr.join(" "));
 
+
+
+
+
+
 // question2 - how to check an object is array or not by wring some pf code
 
 // function chackarraya(e){

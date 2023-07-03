@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= title%></title>
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+    <body>
+        <%- include("partials/navbar") %>
+        <div class="cards">
+            <% posts.forEach(function(post){ %>
+            <!--  -->
+            <div class="card">
+                <img src="<%= post.image%>" alt="" />
+                <div class="content">
+                    <h1><%= post.heading%></h1>
+                    <p>
+                        <%= post.para %></p>
+                        <button>Explore More</button>
+                    </p>
+                </div>
+            </div>
+            <!--  -->
+            <% })%>
+        </div>
+    </body>
+</html>
+

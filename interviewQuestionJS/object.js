@@ -7,6 +7,7 @@
 // }
 // user.name = 'sid';
 // delete user.age;
+// console.log(user)
 
 // delete user['oor suna']
 // console.log(user)

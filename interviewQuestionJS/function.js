@@ -1,9 +1,10 @@
 // function in the javascript
 // question1 :-what is function declearation
 
-// function square(num){
-//    return num * num;
-// }
+function square(num){
+   return num * num;
+}
+console.log(square(2)) 
 
 // question2 :- what is function expression
 
@@ -46,6 +47,15 @@
 
 // function Hoisting :- important topic
 
+
+
+// arrow funtion 
+
+// const multuply = () => {
+//      2*3;
+// }
+
+// console.log(multuply())
 
 
 

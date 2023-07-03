@@ -2,62 +2,67 @@
 // Arrays in Javascript
 
 // Decalaration
-// let person = {
-//     name: "Piyush",
-//     age: 25,
-//   };
+let person = {
+    name: "Piyush",
+    age: 25,
+  };
   
-//   let arr = ["apple", "banana", "cherry", person];
+  let arr = ["apple", "banana", "cherry", person];
   
-//   console.log(arr.length); // know the length of an array
+  // console.log(arr.length); // know the length of an array
   
   // # Add and Remove Elements
   
   // Add to End of the Array
-//   arr.push("orange");
+  // arr.push("orange");
   
   // Remove From End of the Array
-//   arr.pop();
-//   arr.pop();
-  
-  // Add to Top of the Array
-//   arr.unshift("orange");
-  
-  // Remove From Top of the Array
-//   arr.shift();
-  
-  // # Looping Arrays
+    // arr.pop();
+    //   arr.pop();
+    
+    // Add to Top of the Array
+      // arr.unshift("orange");
+      
+      // Remove From Top of the Array
+        // arr.shift();
+        
+        // # Looping Arrays
+        // console.log(arr)
   
   // For Loop
-//   for (let i = 0; i < arr.length; i++) {
-    // console.log(arr[i]);
-//   }
+  // for (let i = 0; i < arr.length; i++) {
+  //   console.log(arr[i]);
+  // }
   
   // While Loop
-//   let i = 0;
-//   while (i < arr.length) {
-    // console.log(arr[i]);
+  // let i = 0;
+  // while (i < arr.length) {
+  //   console.log(arr[i]);
   
-//     i++;
-//   }
+  //   i++;
+  // }
   
   // # Inbuilt Loop Methods
-//   const numbers = [1, 2, 3, 4, 5];
+  const numbers = [1, 2, 3, 4, 5];
   
   // map in javascript
-//   numbers.map((item, index, array) => {
+//  const newarr =  numbers.map((item, index, array) => {
 //     return item + 5;
 //   });
+//   console.log(newarr)
+
   
   // filter in javascript
-//   numbers.filter((item, index, array) => {
+//  const newarr= numbers.filter((item, index, array) => {
 //     return item > 3;
 //   });
+//   console.log(newarr)
   
   // reduce in javascript
-//   numbers.reduce((prev, item) => {
-//     return prev + item;
-//   }, 2);
+  // const newarr = numbers.reduce((prev, item) => {
+  //   return prev * item;
+  // }, 2);
+  // console.log(newarr)
   
   // some in javascript
 //   numbers.some((item, index, array) => {
