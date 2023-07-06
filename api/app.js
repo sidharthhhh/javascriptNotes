@@ -2,38 +2,40 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose")
 
-app.use(express.json())
+require("./userDetails");
 
+const User = mongoose.model("UserInfo");
+
+app.use(express.json()); // Move this line above route definitions
+
+app.post("/register", async (req, res) => {
+  const { name, email, mobileNo } = req.body;
+
+  try {
+    await User.create({
+      uname: name,
+      email: email,
+      phoneNo: mobileNo,
+    });
+    res.send({ status: "ok" });
+  } catch (error) {
+    res.send({ status: "error" });
+  }
+});
+
+// ... other routes
 
 const mongoUrl = "mongodb+srv://sidharth:qwertyuiop@cluster0.laaxkwc.mongodb.net/";
 
-mongoose.connect(mongoUrl, {
+mongoose
+  .connect(mongoUrl, {
     useNewUrlParser: true
-}).then(() => { console.log("Connect to database") })
-    .catch(e => console.log(e))
+  })
+  .then(() => {
+    console.log("Connected to database");
+  })
+  .catch(e => console.log(e));
 
-
-
-
-
-app.post("/post", async (req, res) => {
-    console.log(req.body)
-
-    const { data } = req.body;
-
-    try {
-
-        if (data == "sid") {
-            res.send({ status: "ok" })
-        }
-        else {
-            res.send({ status: "user not found" })
-        }
-    } catch (error) {
-        res.send({ status: "error" })
-    }
-
-})
 app.listen(5000, () => {
-    console.log("server running")
-})
+  console.log("Server running");
+});
