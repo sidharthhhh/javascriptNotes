@@ -29,6 +29,15 @@ router.get("/about", (req, res) => {
 router.get("/users", (req, res) => {
     res.render("users", { title: "users ", posts: db });
 });
+router.get("/product", (req, res) => {
+    res.render("product", { title: "product ", posts: db });
+});
+router.get("/create-product", (req, res) => {
+    res.render("create-product", { title: "create-product"});
+});
+router.get("/pro", (req, res) => {
+    res.json(req.query)
+});
 
 
 module.exports = router;

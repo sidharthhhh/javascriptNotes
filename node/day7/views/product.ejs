@@ -1,0 +1,22 @@
+<%- include("partials/header")%>
+<body>
+    <%- include("partials/navbar") %>
+    <h1>This is product page</h1>
+    <button><a href="/create-product">create product</a></button>
+    <div class="cards">
+        <% posts.forEach(function(post){ %>
+            <!--  -->
+            <div class="card">
+                <img src="<%= post.image%>" alt="" />
+                <div class="content">
+                    <h1><%= post.heading%></h1>
+                    <p>
+                        <%= post.para %></p>
+                        <button>Explore More</button>
+                    </p>
+                </div>
+            </div>
+            <!--  -->
+            <% })%>
+        </div>
+    <%- include("partials/footer")%>
