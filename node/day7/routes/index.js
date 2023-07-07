@@ -35,9 +35,17 @@ router.get("/product", (req, res) => {
 router.get("/create-product", (req, res) => {
     res.render("create-product", { title: "create-product"});
 });
-router.get("/pro", (req, res) => {
-    res.json(req.query)
+// router.get("/pro", (req, res) => {
+//     res.json(req.query)
+// });
+
+router.post("/create-product", (req, res) => {
+    // res.json(req.query)  // it basically fetch data from URL
+    // res.json(req.body);  // fetch data from body/parser
+    db.push(req.body);
+    res.redirect("/product")
 });
+
 
 
 module.exports = router;
