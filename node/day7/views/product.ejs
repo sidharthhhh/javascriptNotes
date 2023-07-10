@@ -4,7 +4,7 @@
     <h1>This is product page</h1>
     <button><a href="/create-product">create product</a></button>
     <div class="cards">
-        <% posts.forEach(function(post){ %>
+        <% posts.forEach(function(post, index){ %>
             <!--  -->
             <div class="card">
                 <img src="<%= post.image%>" alt="" />
@@ -12,8 +12,8 @@
                     <h1><%= post.heading%></h1>
                     <p>
                         <%= post.para %></p>
-                        <button>delete</button>
-                        <button>update</button>
+                        <button><a href="/update-product/<%= index %>">upadte</a></button>
+                        <button><a href="/delete-product/<%= index %>">delete</a></button>
                     </p>
                 </div>
             </div>

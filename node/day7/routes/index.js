@@ -33,7 +33,7 @@ router.get("/product", (req, res) => {
     res.render("product", { title: "product ", posts: db });
 });
 router.get("/create-product", (req, res) => {
-    res.render("create-product", { title: "create-product"});
+    res.render("create-product", { title: "create-product" });
 });
 // router.get("/pro", (req, res) => {
 //     res.json(req.query)
@@ -46,6 +46,30 @@ router.post("/create-product", (req, res) => {
     res.redirect("/product")
 });
 
+router.get("/delete-product/:index", (req, res) => {
+    // res.send(req.params.index)
+    //  res.json("message : "+req.params.index)
 
+    db.splice(req.params.index, 1);
+    // res.redirect("back")
+    res.redirect("/product")
+})
+
+router.get("/update-product/:index", (req, res) => {
+res.render("update-product", {
+     title : "update product",
+     post: db[req.params.index],
+     index: req.params.index,
+   }) 
+//    res.redirect("/product")
+})
+router.post("/update-product/:index", (req, res) => {
+   let data = db[req.params.index];
+   data.image = req.body.image
+   data.heading = req.body.heading
+   data.para = req.body.para
+
+   res.redirect("/product")
+})
 
 module.exports = router;
