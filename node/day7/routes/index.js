@@ -64,10 +64,14 @@ res.render("update-product", {
 //    res.redirect("/product")
 })
 router.post("/update-product/:index", (req, res) => {
-   let data = db[req.params.index];
-   data.image = req.body.image
-   data.heading = req.body.heading
-   data.para = req.body.para
+//    let data = db[req.params.index];
+//    data.image = req.body.image
+//    data.heading = req.body.heading
+//    data.para = req.body.para
+
+
+   // secon method
+   db[req.params.index] = req.body;
 
    res.redirect("/product")
 })
