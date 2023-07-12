@@ -19,6 +19,25 @@ const db = [
     },
 ];
 
+
+const users = [
+    {
+        image: "https://i.pinimg.com/564x/81/fc/52/81fc52b6f93b43699439f61ac181c477.jpg",
+        heading: "image of artistic girl",
+        para: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Accusamus natus unde cumque nobis, perferendis aspernatur minus ut at eos asperiores.",
+    },
+    {
+        image: "https://i.pinimg.com/736x/e9/64/47/e96447f6b3aafb8f00a1965d2782dfb4.jpg",
+        heading: "good looking model",
+        para: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Accusamus natus unde cumque nobis, perferendis aspernatur minus ut at eos asperiores.",
+    },
+    {
+        image: "https://i.pinimg.com/564x/81/fc/52/81fc52b6f93b43699439f61ac181c477.jpg",
+        heading: "best looking model",
+        para: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Accusamus natus unde cumque nobis, perferendis aspernatur minus ut at eos asperiores.",
+    },
+];
+
 router.get("/", (req, res) => {
     res.render("index", { title: "Homepage", posts: db });
 });
@@ -27,7 +46,7 @@ router.get("/about", (req, res) => {
 });
 
 router.get("/users", (req, res) => {
-    res.render("users", { title: "users ", posts: db });
+    res.render("users", { title: "users ", posts: users });
 });
 router.get("/product", (req, res) => {
     res.render("product", { title: "product ", posts: db });
@@ -39,12 +58,24 @@ router.get("/create-product", (req, res) => {
 //     res.json(req.query)
 // });
 
+router.get("/create-users", (req, res) => {
+    res.render("create-users", { title: "create-users" });
+});
+
 router.post("/create-product", (req, res) => {
     // res.json(req.query)  // it basically fetch data from URL
     // res.json(req.body);  // fetch data from body/parser
     db.push(req.body);
     res.redirect("/product")
 });
+
+router.post("/create-users", (req, res) => {
+    // res.json(req.query)  // it basically fetch data from URL
+    // res.json(req.body);  // fetch data from body/parser
+    users.push(req.body);
+    res.redirect("/users")
+});
+
 
 router.get("/delete-product/:index", (req, res) => {
     // res.send(req.params.index)
@@ -53,6 +84,12 @@ router.get("/delete-product/:index", (req, res) => {
     db.splice(req.params.index, 1);
     // res.redirect("back")
     res.redirect("/product")
+})
+router.get("/delete-users/:index", (req, res) => {
+    // res.send(req.params.body)
+    // res.json("message : "+req.params.index)
+    users.splice(req.params.index, 1);
+    res.redirect("back")
 })
 
 router.get("/update-product/:index", (req, res) => {
@@ -75,5 +112,19 @@ router.post("/update-product/:index", (req, res) => {
 
    res.redirect("/product")
 })
+
+router.get("/update-users/:index", (req, res) => {
+    res.render("update-users", {
+         title : "update users",
+         post: users[req.params.index],
+         index: req.params.index,
+       }) 
+    })
+
+    router.post("/update-users/:index", (req, res) => {
+           users[req.params.index] = req.body;
+        
+           res.redirect("/users")
+        })
 
 module.exports = router;

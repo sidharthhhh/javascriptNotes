@@ -1,5 +1,23 @@
 <%- include("partials/header")%>
 <body>
     <%- include("partials/navbar") %>
-    <h1>This is users pages</h1>
+    <h1>This is users page</h1>
+    <button><a href="/create-users">create users</a></button>
+    <div class="cards">
+        <% posts.forEach(function(post, index){ %>
+            <!--  -->
+            <div class="card">
+                <img src="<%= post.image%>" alt="" />
+                <div class="content">
+                    <h1><%= post.heading%></h1>
+                    <p>
+                        <%= post.para %></p>
+                        <button><a href="/update-users/<%= index %>">upadte</a></button>
+                        <button><a href="/delete-users/<%= index %>">delete</a></button>
+                    </p>
+                </div>
+            </div>
+            <!--  -->
+            <% })%>
+        </div>
     <%- include("partials/footer")%>

@@ -1,0 +1,15 @@
+<%- include("partials/header")%>
+
+    <%- include("partials/navbar") %>
+
+        <!-- <form action="/pro" method="get"> -->
+        <form action="/update-users/<%= index%>" method="post">
+            <h1>update your product</h1>
+            <img style="width: 450px;" src="<%= post.image%>" alt="">
+            <input value="<%= post.image%>" type="text" name="image">
+            <input value="<%= post.heading%>" type="text" name="heading">
+            <textarea name="para"><%= post.para%></textarea>
+            <button>update users</button>
+        </form>
+
+        <%- include("partials/footer")%>
