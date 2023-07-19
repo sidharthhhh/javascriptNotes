@@ -1,13 +1,14 @@
 <%- include("particals/header.ejs")%>
     <%- include("particals/nav.ejs")%>
 
-        <form action="" class="m-auto bg-light w-25 mt-5">
-            Email: <input type="email" class="form-control w-50">
-            password: <input type="password" class="form-control w-50">
+        <form action="/signin" class="m-auto bg-light w-25 mt-5" method="post">
+            <!-- username <input name="username" type="text" class="form-control w-50"> -->
+            Email: <input name="email" type="email" class="form-control w-50">
+            password: <input name="password" type="password" class="form-control w-50">
             <p class="text-center">
                 <a href="/">Forgot password</a>
             </p>
-            <button class="btn btn-primary">Signup</button>
+            <button class="btn btn-primary">signin</button>
             <p>Already have a account <a href="/signup">signup</a></p>
         </form>
 
