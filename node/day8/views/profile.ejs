@@ -1,7 +1,19 @@
-<%- include("particals/header.ejs")%>
-    <%- include("particals/nav.ejs")%>
-        <div class="container bg-light">
-            <h1>profile page</h1>
-            <p>welcome to profile</p>
-        </div>
-        <%- include("particals/footer.ejs")%>
+<%- include("particals/header.ejs") %>
+<%- include("particals/nav.ejs") %>
+<div class="container bg-light">
+  <h1>Profile Page</h1>
+  <p>Welcome to the profile</p>
+  <hr>
+  <ul class="list-group w-25">
+    <% users.forEach((user) => { %>
+      <li class="list-group-item d-flex justify-content-between">
+        <%= user.username %>
+        <span>
+          <a class="text-decoration-none" href="/update/<%= user._id %>">✏️</a>
+          <a class="text-decoration-none" href="/delete/<%= user._id %>">❌</a>
+        </span>
+      </li>
+    <% }) %>
+  </ul>
+</div>
+<%- include("particals/footer.ejs") %>

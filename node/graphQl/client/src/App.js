@@ -17,7 +17,7 @@ const GET_TODOS_WITH_USER = gql`
 function App() {
   const { data, loading, error } = useQuery(GET_TODOS_WITH_USER);
 
-  if (loading) return <h1>Loading..............</h1>;
+  if (loading) return <h1>Loading.....  .........</h1>;
   if (error) return <h1>Error: {error.message}</h1>;
 
 
