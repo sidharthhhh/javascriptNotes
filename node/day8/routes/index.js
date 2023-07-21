@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/userModel');
+const user = require('../models/userModel');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -35,7 +36,7 @@ router.get('/signin', function (req, res, next) {
 router.post('/signin', async function (req, res, next) {
   try {
     const { username, password } = req.body;
-    const user = await User.findOne(   username );
+    const user = await User.findOne(username);
     if (!user) {
       return res.send(`User not found. <a href="/signup">Sign up</a>`);
     }
@@ -68,6 +69,36 @@ router.get('/delete/:id', async function (req, res, next) {
   }
 });
 
+router.get('/delete/:id', async function (req, res, next) {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.redirect("/profile");
+  } catch (error) {
+    res.send(error);
+  }
+});
 
+router.get('/update/:id', async function (req, res, next) {
+  try {
+    const currentuser = await User.findOne({
+      _id: req.params.id
+    });
+    res.render("update", { user: currentuser });
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+router.post('/update/:id', async function (req, res, next) {
+  let updateUser = await user.findOneAndUpdate(
+    {_id: req.params.id},
+       {
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    }
+  )
+  res.redirect("/profile")
+});
 
 module.exports = router;
