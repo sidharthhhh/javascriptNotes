@@ -1,0 +1,10 @@
+<%- include("particals/header.ejs")%>
+<%- include("particals/nav.ejs")%>
+
+<form action="/get-email" class="container" method="post">
+  Email: <input name="email" type="email" class="form-control w-50 mb-3">
+  <button class="btn btn-primary">send mail</button>
+  <p><a href="/signup">Signup | signin</a></p>
+</form>
+
+<%- include("particals/footer.ejs")%>

@@ -29,27 +29,32 @@ router.post('/signup', async function (req, res, next) {
   //  .catch((err)=> console.log(err))
 });
 
-
 router.get('/signin', function (req, res, next) {
   res.render('signin');
 });
 router.post('/signin', async function (req, res, next) {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne(username);
+    const { email, password } = req.body;
+
+    // Assuming 'User' is the correct model representing your user collection
+    const user = await User.findOne({ email: email });
+
     if (!user) {
       return res.send(`User not found. <a href="/signup">Sign up</a>`);
     }
+
     if (user.password !== password) {
       return res.send(`Incorrect password. <a href="/signup">Sign up</a>`);
     }
-    //  res.json(user);
-    // res.render("profile")
-    res.redirect("/profile")
+
+    // res.json(user);
+    // res.render("profile");
+    res.redirect("/profile");
   } catch (error) {
     res.send(error);
   }
 });
+
 router.get('/profile', async function (req, res, next) {
   try {
     // const users = await userModel.find(); 
@@ -90,7 +95,7 @@ router.get('/update/:id', async function (req, res, next) {
 });
 
 router.post('/update/:id', async function (req, res, next) {
-  let updateUser = await user.findOneAndUpdate(
+   await user.findOneAndUpdate(
     {_id: req.params.id},
        {
       username: req.body.username,
@@ -100,5 +105,59 @@ router.post('/update/:id', async function (req, res, next) {
   )
   res.redirect("/profile")
 });
+
+
+
+router.get("/getemail", function(req, res) {
+  res.render("getemail", { title: "forgot password" });
+});
+
+router.post("/get-email", async function(req, res) {
+  try {
+    const { email } = req.body;
+
+    // Validate the email input
+    // if (!isValidEmail(email)) {
+    //   return res.status(400).send("Invalid email format");
+    // }
+
+    const user = await User.findOne({ email });
+
+    if (user === null) {
+      return res.send("User not found");
+    }
+
+    res.redirect("/change-password/" + user._id);
+  } catch (error) {
+    res.status(500).send("Internal server error");
+  }
+});
+
+router.get("/change-password/:id", function(req, res) {
+  res.render("changepassword", { title: "Change Password", id: req.params.id });
+});
+
+router.post("/change-password/:id", async function(req, res) {
+  try {
+    const { password } = req.body;
+
+    // Add proper password validation here if necessary
+
+    await User.findByIdAndUpdate(req.params.id, { password });
+    res.redirect("/signup");
+  } catch (error) {
+    res.status(500).send("Internal server error");
+  }
+});
+
+// Helper function to validate email format
+
+/* function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+} */
+
+module.exports = router;
+
 
 module.exports = router;
