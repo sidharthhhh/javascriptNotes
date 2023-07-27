@@ -1,0 +1,12 @@
+<%- include("particals/header.ejs")%>
+<%- include("particals/nav.ejs")%>
+
+<form action="/reset/<%= id%>" class="container" method="post">
+    <h1 class="mb-3">reset password</h1>
+  oldpassword <input name="oldpassword" type="password" class="form-control w-50 mb-3">
+   password<input name="password" type="password" class="form-control w-50 mb-3">
+  <button class="btn btn-primary">reset password</button>
+ 
+</form>
+
+<%- include("particals/footer.ejs")%>

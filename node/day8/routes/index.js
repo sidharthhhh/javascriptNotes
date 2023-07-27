@@ -157,7 +157,34 @@ router.post("/change-password/:id", async function(req, res) {
   return emailRegex.test(email);
 } */
 
-module.exports = router;
+
+router.get("/reset/:id", function(req, res){
+  
+  res.render("reset", {title: " reset password", id: req.params.id})
+})
+router.post("/reset/:id", async function(req, res) {
+  try {
+    const { oldpassword, password } = req.body;
+    const user = await User.findById(req.params.id);
+
+    if (!password) {
+      return res.send(`Incorrect password. <a href="/reset">Reset password</a>`);
+    }
+
+
+    if (oldpassword !== user.password) {
+      return res.send(`Old password is incorrect. <a href="/reset">Reset password</a>`);
+    }
+
+    user.password = password;
+    await user.save();
+
+    res.redirect("/profile")
+  } catch (error) {
+    res.send(error)
+  }
+});
+
 
 
 module.exports = router;
