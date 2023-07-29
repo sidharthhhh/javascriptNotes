@@ -1,33 +1,69 @@
-const form = document.querySelector("form");
-const input = document.querySelector("input");
-const textarea = document.querySelector("textarea");
-const ul = document.querySelector("ul");
-const li = document.querySelector('li');
-const task = [];
 
-form.addEventListener("submit", (event) => {
+  const form = document.querySelector("form");
+  const input = document.querySelector("input");
+  const textarea = document.querySelector("textarea");
+  const ul = document.querySelector("ul");
+  const task = [];
+
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const [title, description] = event.target;
-    console.log(title.value, description.value);
-    // const newTask = {
-    //     title :title.value,
-    //     description: description.value
-    // }
-    // task.push(newTask);
-    // console.log(task)
+    const title = input.value;
+    const description = textarea.value;
 
-    ul.innerHTML += `
-    <li
-    class="d-flex justify-content-between shadow-sm list-group-item mb-3">
-    <span class="item">
-    ${title.value}   
-      ${description.value}
-    </span>
-    <span class="asset">
-        <span class="delete">❌</span>
-        &nbsp; &nbsp;
-        <span class="update">✏️</span>
-    </span>
-</li>
-    `
-});
+    if (title.trim() === "" || description.trim() === "") {
+      alert("Please enter both title and description.");
+      return;
+    }
+
+    const newTask = {
+      title,
+      description,
+    };
+
+    task.push(newTask);
+    updateTaskList();
+    input.value = "";
+    textarea.value = "";
+  });
+
+  function updateTaskList() {
+    ul.innerHTML = "";
+    task.forEach((item, index) => {
+      ul.innerHTML += `
+      <li class="d-flex justify-content-between shadow-sm list-group-item mb-3">
+        <span class="item">
+          ${item.title}
+          ${item.description}
+        </span>
+        <span class="asset">
+          <span class="delete" onclick="deleteTask(${index})">❌</span>
+          &nbsp; &nbsp;
+          <span class="update" onclick="editTask(${index})">✏️</span>
+        </span>
+      </li>
+      `;
+    });
+  }
+
+  function deleteTask(index) {
+    task.splice(index, 1);
+    updateTaskList();
+  }
+
+  function editTask(index) {
+    const item = task[index];
+    const updatedTitle = prompt("Enter updated title:", item.title);
+    const updatedDescription = prompt(
+      "Enter updated description:",
+      item.description
+    );
+
+    if (updatedTitle !== null && updatedDescription !== null) {
+      task[index] = {
+        title: updatedTitle,
+        description: updatedDescription,
+      };
+      updateTaskList();
+    }
+  }
+
