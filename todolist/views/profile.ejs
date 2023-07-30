@@ -1,0 +1,93 @@
+<%- include("particals/header.ejs")%>
+<%- include("particals/nav.ejs")%>
+    <div class="container mt-5 p-5">
+        <form class="p-3 mb-5 w-50" action="/profile/<%= user._id %>" method="post">
+            <input name="title" class="form-control mb-3" type="text" placeholder="Title" />
+            <textarea name="des" class="form-control mb-3" placeholder="Enter description here..."></textarea>
+            <button class="w-50 btn btn-dark">Add Task</button>
+        </form>
+
+        <h2>Pending Tasks</h2>
+
+        <ul class="list-group bg-white p-3">
+           
+        <% user.todo.forEach((item, index) => { %>
+            <li class="d-flex justify-content-between shadow-sm list-group-item mb-3">
+              <span class="item">
+               <%= item.title %>
+                <%= item.des %>
+              </span>
+              <span class="asset">
+                <span class="delete" ><a href="/delete/<%= user.id%>/<%= index %>">❌</a></span>
+                &nbsp; &nbsp;
+                <span class="update"><a href="/update/<%= user.id%>/<%= index %>">✏️</a></span>
+              </span>
+            </li>
+        <% }) %>
+        
+        </ul>
+
+        
+    </div>
+
+    <!-- <script>
+        
+  const form = document.querySelector("form");
+  const input = document.querySelector("input");
+  const textarea = document.querySelector("textarea");
+  const ul = document.querySelector("ul");
+  const task = [];
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const title = input.value;
+    const description = textarea.value;
+
+    if (title.trim() === "" || description.trim() === "") {
+      alert("Please enter both title and description.");
+      return;
+    }
+
+    const newTask = {
+      title,
+      description,
+    };
+
+    task.push(newTask);
+    updateTaskList();
+    input.value = "";
+    textarea.value = "";
+  });
+
+//   function updateTaskList() {
+//     ul.innerHTML = "";
+//     task.
+//     });
+//   }
+
+  function deleteTask(index) {
+    task.splice(index, 1);
+    updateTaskList();
+  }
+
+  function editTask(index) {
+    const item = task[index];
+    const updatedTitle = prompt("Enter updated title:", item.title);
+    const updatedDescription = prompt(
+      "Enter updated description:",
+      item.description
+    );
+
+    if (updatedTitle !== null && updatedDescription !== null) {
+      task[index] = {
+        title: updatedTitle,
+        description: updatedDescription,
+      };
+      updateTaskList();
+    }
+  }
+
+
+    </script> -->
+
+ <%- include("particals/footer.ejs")%>
