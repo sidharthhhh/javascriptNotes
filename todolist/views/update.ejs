@@ -1,0 +1,12 @@
+<%- include("particals/header.ejs")%>
+<%- include("particals/nav.ejs")%>
+    <div class="container mt-5 p-5">
+        <h1>Update The List</h1>
+        <form class="p-3 mb-5 w-50" action="/update/<%= user._id %>/<%= index %>" method="post">
+            <input value=<%= todo.title %> name="title" class="form-control mb-3" type="text" placeholder="Title" />
+            <textarea  name="des" class="form-control mb-3" placeholder="Enter description here..."><%= todo.des %></textarea>
+            <button class="w-50 btn btn-dark">Add Task</button>
+        </form>
+    </div>
+
+ <%- include("particals/footer.ejs")%>

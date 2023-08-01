@@ -78,36 +78,18 @@ router.get("/delete/:id/:index",async (req, res) => {
 
 });
 
-router.patch("/update/:id/:index", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    const todoIndex = parseInt(req.params.index);
-
-    if (todoIndex < 0 || todoIndex >= user.todo.length) {
-      return res.status(404).json({ error: "Todo item not found" });
-    }
-
-    // Assuming req.body contains the updated todo item properties
-    const { title, des } = req.body;
-
-    // Update the todo item at the specified index
-    user.todo[todoIndex].title = title;
-    user.todo[todoIndex].des = des;
-
-    await user.save();
-
-    res.json({ message: "Todo item updated successfully" });
-  } catch (err) {
-    res.status(500).json({ error: "Something went wrong" });
-  }
+router.get("/update/:id/:index",async (req, res) => {
+  const user = await User.findById(req.params.id);
+  res.render("update",{user: user,todo: user.todo[req.params.index],index: req.params.index});
 });
 
 
+router.post("/update/:id/:index",async (req, res) => {
+  const user = await User.findById(req.params.id);
+  user.todo[req.params.index] = req.body;
+  await user.save();
+  res.redirect("/profile/"+req.params.id);
+});
 
 
 
