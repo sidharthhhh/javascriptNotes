@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Profile</title>
   <!-- Add Bootstrap CSS link -->
@@ -11,22 +12,33 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container mt-5">
     <div class="row">
-      <% patients.forEach((patient) => { %>
+      <% patients.forEach((patient)=> { %>
         <div class="col-md-4 mb-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><%= patient.firstname %> <%= patient.lastname %></h5>
-              <p class="card-text">Age: <%= patient.age %></p>
-              <p class="card-text">Weight: <%= patient.weight %></p>
-              <p class="card-text">Status: <%= patient.status %></p>
-              <p class="card-text">Medical History: <%= patient.medical_history %></p>
-              <p class="card-text"><%= patient.pp %></p>
+              <h5 class="card-title">
+                <%= patient.firstname %>
+                  <%= patient.lastname %>
+              </h5>
+              <p class="card-text">Age: <%= patient.age %>
+              </p>
+              <p class="card-text">Weight: <%= patient.weight %>
+              </p>
+              <p class="card-text">Status: <%= patient.status %>
+              </p>
+              <p class="card-text">Medical History: <%= patient.medical_history %>
+              </p>
+              <p class="card-text">
+                <%= patient.pp %>
+              </p>
               <a class="text-decoration-none" href="/deletePatient/<%= patient._id %>">❌</a>
               <a class="pencil text-decoration-none">✏️</a>
-              <form style="display: none;" class="mt-3 updateForm" action="/updatePatient/<%= patient._id %>" method="post">
+              <form style="display: none;" class="mt-3 updateForm" action="/updatePatient/<%= patient._id %>"
+                method="post">
                 <div class="form-group">
                   <select class="form-control" name="pp" required>
                     <option value="Unactive">Unactive</option>
@@ -34,11 +46,11 @@
                   </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-              </form>          
+              </form>
             </div>
           </div>
         </div>
-      <% }) %>
+        <% }) %>
     </div>
   </div>
 
@@ -50,11 +62,11 @@
     let updateForm = document.querySelector('.updateForm');
     let pencil = document.querySelector('.pencil');
     let flag = 0;
-    pencil.addEventListener("click",() =>{
-      if(flag === 0){
+    pencil.addEventListener("click", () => {
+      if (flag === 0) {
         updateForm.style.display = "block";
         flag = 1;
-      } else{        
+      } else {
         updateForm.style.display = "none";
         flag = 0;
       }
@@ -62,4 +74,5 @@
 
   </script>
 </body>
+
 </html>

@@ -59,7 +59,7 @@ router.route("/petientRegister").post(async (req,res) => {
     status: req.body.status,
     medical_history: req.body.medicalHistory
   });
-  res.send(`patient successfully registered with ID: ${patient._id}`);
+  res.send(`patient successfully registered with ID: ${patient._id}, <a class="text-decoration-none" href="/">🏠</a>`);
 }) 
 
 
