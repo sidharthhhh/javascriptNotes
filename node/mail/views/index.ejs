@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+    </head>
+    <body>
+        <h1>Send Mail</h1>
+        <form action="/send-mail" method="post">
+            <input type="email" placeholder="example@john.doe" name="email" />
+            <br /><br />
+            <input type="text" placeholder="Subject Of Mail" name="subject" />
+            <br />
+            <br />
+            <input type="text" placeholder="Body Of Mail" name="body" />
+            <br /><br />
+            <button>Send Mail</button>
+        </form>
+    </body>
+</html>
