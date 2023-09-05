@@ -1,0 +1,8 @@
+1. Create Component Context.jsx 
+2. Wrap App.jsx with Context in main.jsx
+3. In Context.jsx, create data with useState 
+4. Create(createContext) and export const;
+5. Return children wrapperd with context.Provider
+6. pass value=state in attribute of context.Provider
+7. In Component where you want to use Context Data
+   useContext(ContextName) store the value in variable
