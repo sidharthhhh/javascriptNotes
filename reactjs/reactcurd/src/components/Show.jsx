@@ -1,7 +1,8 @@
-import React from "react";
+import{ useContext } from "react";
+import { UserContext } from "../utils/Context";
 
-const Show = (props) => {
-    const { active, users, setusers, ActiveHandler } = props;
+const Show = () => {
+    const { active, users, setusers,setActive,setusername,setskill } = useContext(UserContext);
 
     const DeleteHandler = (i) => {
         const copyusers = [...users];
@@ -9,6 +10,12 @@ const Show = (props) => {
         setusers(copyusers);
 
         // setusers(users.filter((e, idx) => idx !== i));
+    };
+
+    const ActiveHandler = (i) => {
+        setActive(i);
+        setusername(users[i].username);
+        setskill(users[i].skill);
     };
 
     return (
