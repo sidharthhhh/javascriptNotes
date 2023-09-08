@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+ #mongodb services
+ mongo_db:
+   container_name: db_container
+   image: mongo:latest
+   restart: always
+   ports: 
+    - 2717:27017
+   volumes:
+    - mongo_db:/data/db
+
+ #node js 
+ api:
+  build: .
+  ports:
+   - 4000:3000
+  environment:
+   DATABASE_URL: mongodb://mongo_db:27017/todolist
+  depends_on:
+   - mongo_db
+
+
+volumes:
+  mongo_db: {}
